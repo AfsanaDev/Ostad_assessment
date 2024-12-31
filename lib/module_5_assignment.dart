@@ -12,7 +12,7 @@ class Person{
   String getName()=>name;
   int getAge()=>age;
   String getAddress()=>address;
-
+ 
   void displayRole(){
     }
 }
@@ -36,7 +36,9 @@ Student(this.StudentId, this.grade, this.course):super('John Doe', 20, ' 123 Mai
       for(int i =0 ; i<=course.length; i++){
       avg += course[i];
     }
-    }catch(e){}
+    }catch(e){
+      print('Error: $e');
+    }
     return avg/course.length;
   }
 }

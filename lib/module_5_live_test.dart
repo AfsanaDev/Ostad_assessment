@@ -1,6 +1,6 @@
 void main(){
 
-Triangle triangle = Triangle(10, 5, 0.0);
+Triangle triangle = Triangle(10.6, 5.5, 0.0);
 
 print('This is My module 5 live test Output:');
 print('--------------------------------------\n');

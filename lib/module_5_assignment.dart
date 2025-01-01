@@ -37,7 +37,7 @@ Student(String name, String address,int age,this.studentId, this.grade, this.cou
       avg += course[i];
     }
     }catch(e){
-      //print('Error: $e');
+      print('Error: $e');
     }
     return avg/course.length;
   }

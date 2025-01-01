@@ -2,7 +2,7 @@ abstract class Role{
   void displayRole();
 }
 
-class Person{
+class Person implements Role{
   String name;
   int age;
   String address;
@@ -12,17 +12,17 @@ class Person{
   String getName()=>name;
   int getAge()=>age;
   String getAddress()=>address;
- 
+ @override
   void displayRole(){
     }
 }
 
 class Student extends Person{
-String StudentId;
+String studentId;
 String grade;
 List<double> course;
 
-Student(this.StudentId, this.grade, this.course):super('John Doe', 20, ' 123 Main St');
+Student(String name, String address,int age,this.studentId, this.grade, this.course):super(name,age, address);
 
 @override
   void displayRole() {
@@ -37,17 +37,17 @@ Student(this.StudentId, this.grade, this.course):super('John Doe', 20, ' 123 Mai
       avg += course[i];
     }
     }catch(e){
-      print('Error: $e');
+      //print('Error: $e');
     }
     return avg/course.length;
   }
 }
 
 class Teacher extends Person{
-  String TeacherId;
+  String teacherId;
   List<String> course;
 
-  Teacher(this.TeacherId, this.course):super('Mrs. Smith', 35, ' 456 Oak St');
+  Teacher(String name, int age, String address,this.teacherId, this.course):super(name, age, address);
   
   @override
   void displayRole() {
@@ -62,25 +62,28 @@ class Teacher extends Person{
 }
 
 void main(){
+
   print('This is My module 5 assignment');
   print('');
   print('This is for display Student information');
   print('==============================================\n');
-  Student student = Student('', '', [82.0, 85.0, 90.0]);
+  Student student = Student('John Doe', '123 Main St', 20,'233','A', [82, 85.0, 90.0]);
+
   student.displayRole();
-  print('Name: ${student.name}');
-  print('Age: ${student.age}');
-  print('Address: ${student.address}');
-  print('Average: ${student.clculateAvg()}\n');
+  print('Name: ${student.getName()}');
+  print('Age: ${student.getAge()}');
+  print('Address: ${student.getAddress()}');
+  print('Average: ${student.clculateAvg().toStringAsFixed(2)}\n');
 
   //print('');
   print('This is for display Teacher information');
   print('==============================================\n');
-  Teacher teacher= Teacher('', ['Math', 'Bangla', 'English']);
+  
+  Teacher teacher= Teacher('Mrs. Smith', 35, '456 Oak St', '123', ['Math', 'Bangla', 'English']);
   teacher.displayRole();
-  print('Name: ${teacher.name}');
-  print('Age: ${teacher.age}');
-  print('Address: ${teacher.address}');
+  print('Name: ${teacher.getName()}');
+  print('Age: ${teacher.getAge()}');
+  print('Address: ${teacher.getAddress()}');
   print('Courses Taught:');
   teacher.displayCourse();
 }
